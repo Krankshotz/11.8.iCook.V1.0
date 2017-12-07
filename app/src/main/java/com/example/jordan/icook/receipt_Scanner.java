@@ -64,7 +64,7 @@ public class receipt_Scanner extends AppCompatActivity {
         foods = getResources().getStringArray(R.array.approved_food_list); //creates food list to check for pantry input
 
 //Shortcut to Enter Manually Brings to PAntry acitiviyy
-        Button addMan = findViewById(R.id.button_additem);
+        Button addMan = findViewById(R.id.button_additemRS);
         addMan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -73,7 +73,7 @@ public class receipt_Scanner extends AppCompatActivity {
             }
         });
         //Popup window for help menu
-        Button pantryInfo = findViewById(R.id.infoPantryLoadout);
+        Button pantryInfo = findViewById(R.id.infoPantryLoadoutRS);
         pantryInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
