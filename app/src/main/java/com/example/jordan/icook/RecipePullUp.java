@@ -288,13 +288,13 @@ public class RecipePullUp extends AppCompatActivity {
                             mBuilder.setView(mView);
                             AlertDialog dialog = mBuilder.create();
                             dialog.show();
-                            dialog.getWindow().setLayout(1050,750);
+                            dialog.getWindow().setLayout(1050,900);
                         }
                     }
                 });
                 AlertDialog dialog = mBuilder.create();
                 dialog.show();
-                dialog.getWindow().setLayout(900, 450);
+                dialog.getWindow().setLayout(900, 500);
             }
         });
     }

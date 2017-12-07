@@ -95,10 +95,10 @@ public class ListPantry extends AppCompatActivity {
 /////////////////////
 /// TEST CASE////////
 /////////////////////
-        if(MainActivity.test == 1) {
+      /*  if(MainActivity.test == 1) {
             myDb.insertData("eggs", 2);
             MainActivity.test++;
-        }
+        }*/
 //////////////////////////////////////////////////////////////////////////////////////////////////
 
         addItem();
