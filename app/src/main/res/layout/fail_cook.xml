@@ -8,16 +8,16 @@
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:layout_marginStart="16dp"
-        android:text="You are unable to cook this recipe due to the lack of ingredient or quantity. Please check your Pantry to see what you have available or you can look at more recipe."
+        android:layout_marginEnd="24dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        android:text="Whoops! You don't have the required ingredients to cook this. If you have the ingredient, add it to the pantry."
         android:textSize="22sp"
-        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="16dp" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/failPantry"
@@ -26,8 +26,10 @@
         android:layout_marginEnd="60dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="36dp"
+        android:background="@android:color/transparent"
         android:paddingTop="10dp"
         android:text="View Pantry"
+        android:textColor="@color/Cucumber"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.437"
         app:layout_constraintStart_toEndOf="@+id/failRecipe"
@@ -39,8 +41,10 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="60dp"
         android:layout_marginTop="36dp"
+        android:background="@android:color/transparent"
         android:paddingTop="10dp"
         android:text="View Recipe"
+        android:textColor="@color/Cucumber"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 </android.support.constraint.ConstraintLayout>

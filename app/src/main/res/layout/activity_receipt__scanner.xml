@@ -73,7 +73,7 @@
         android:layout_marginBottom="24dp"
         android:layout_marginStart="32dp"
         android:background="@android:drawable/ic_dialog_info"
-        android:backgroundTint="@android:color/background_dark"
+        android:backgroundTint="@color/colorAccent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 

@@ -9,14 +9,11 @@
     android:background="@android:color/white">
 
 
-
     <EditText
         android:id="@+id/myRecipe"
         android:layout_width="366dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="12dp"
-        android:layout_marginStart="6dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="32dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:text="My Recipes"
@@ -24,8 +21,10 @@
         android:textAllCaps="false"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/ListViewRecipe"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.375"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -33,10 +32,11 @@
         android:id="@+id/ListViewRecipe"
         android:layout_width="0dp"
         android:layout_height="446dp"
+        android:layout_marginTop="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/myRecipe" />
+        app:layout_constraintTop_toBottomOf="@+id/homeButtonRL" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/btn_AddItemsRL"
@@ -79,7 +79,7 @@
         app:srcCompat="@drawable/swipespantry" />
 
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/btn_AddRecipe"
+        android:id="@+id/btn_AddRecipeRL"
         android:layout_width="46dp"
         android:layout_height="50dp"
         android:layout_marginBottom="16dp"
@@ -95,5 +95,15 @@
         app:srcCompat="@android:drawable/ic_input_add"
         tools:layout_constraintBottom_creator="1"
         tools:layout_constraintRight_creator="1" />
+
+    <Button
+        android:id="@+id/infoRecipebuttonRL"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="4dp"
+        android:background="@drawable/ic_info_black_24dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </android.support.constraint.ConstraintLayout>

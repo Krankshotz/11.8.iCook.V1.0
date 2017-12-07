@@ -13,23 +13,22 @@ import android.widget.TextView;
  */
 
 public class Splash extends AppCompatActivity{
-    private TextView tv;
     private ImageView iv;
+
     @Override
     protected void onCreate(Bundle saveInstanceState)
     {
         super.onCreate(saveInstanceState);
         setContentView(R.layout.activity_splash);
-        tv = (TextView) findViewById(R.id.welcome);
-        iv = (ImageView) findViewById(R.id.welcomeImage);
+
+        iv = findViewById(R.id.loadingBanner);
         Animation myanim = AnimationUtils.loadAnimation(this,R.anim.mytransition);
-        tv.startAnimation(myanim);
         iv.startAnimation(myanim);
         final Intent intent = new Intent(this,MainActivity.class);
         Thread timer = new Thread(){
             public void run(){
                 try{
-                    sleep(1000);
+                    sleep(4000);
                 }catch (InterruptedException e){
                     e.printStackTrace();
                 }
@@ -39,6 +38,23 @@ public class Splash extends AppCompatActivity{
                 }
             }
         };
+       /* ic = findViewById(R.id.icook);
+        Animation myanim2 = AnimationUtils.loadAnimation(this,R.anim.mytransition);
+        ic.startAnimation(myanim);
+        final Intent intent2 = new Intent(this,MainActivity.class);
+        Thread timer2 = new Thread(){
+            public void run(){
+                try{
+                    sleep(300);
+                }catch (InterruptedException e){
+                    e.printStackTrace();
+                }
+                finally{
+                    startActivity(intent);
+                    finish();
+                }
+            }
+        };*/
             timer.start();
 
     }

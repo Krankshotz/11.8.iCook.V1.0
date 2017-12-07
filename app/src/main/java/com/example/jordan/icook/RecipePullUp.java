@@ -6,12 +6,15 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.support.annotation.ColorInt;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -64,18 +67,18 @@ public class RecipePullUp extends AppCompatActivity {
 
         //Initializes the global TextViews.
 
-        name = (TextView) findViewById(R.id.name);
-        i1 = (TextView) findViewById(R.id.ig1);
-        q1 = (TextView) findViewById(R.id.qu1);
-        i2 = (TextView) findViewById(R.id.ig2);
-        q2 = (TextView) findViewById(R.id.qu2);
-        i3 = (TextView) findViewById(R.id.ig3);
-        q3 = (TextView) findViewById(R.id.qu3);
-        i4 = (TextView) findViewById(R.id.ig4);
-        q4 = (TextView) findViewById(R.id.qu4);
-        i5 = (TextView) findViewById(R.id.ig5);
-        qu5 = (TextView) findViewById(R.id.qu5);
-        ins = (TextView) findViewById(R.id.instruction);
+        name = findViewById(R.id.name);
+        i1 = findViewById(R.id.ig1);
+        q1 = findViewById(R.id.qu1);
+        i2 = findViewById(R.id.ig2);
+        q2 = findViewById(R.id.qu2);
+        i3 = findViewById(R.id.ig3);
+        q3 = findViewById(R.id.qu3);
+        i4 = findViewById(R.id.ig4);
+        q4 = findViewById(R.id.qu4);
+        i5 = findViewById(R.id.ig5);
+        qu5 = findViewById(R.id.qu5);
+        ins = findViewById(R.id.instruction);
 
         //Set Strings to the the global TextViews
 
@@ -91,75 +94,114 @@ public class RecipePullUp extends AppCompatActivity {
         i5.setText(d10);
         qu5.setText(d11);
         ins.setText(d12);
-        ingredients = new String[] {d2,d4,d6,d8,d10};
-        quantitys = new String[] {d3,d5,d7,d9,d11};
+        ingredients = new String[]{d2, d4, d6, d8, d10};
+        quantitys = new String[]{d3, d5, d7, d9, d11};
         cook = availableIgQu(ingredients, quantitys);
         cookIt(cook);
-        
+        //MEssageBox HelpWindow
+        Button pantryInfoRC = findViewById(R.id.infoRecipeChildren);
+        pantryInfoRC.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                android.app.AlertDialog.Builder infoDialog = new android.app.AlertDialog.Builder(RecipePullUp.this);
+                infoDialog.setMessage("If an ingredient is black you are missing the ingredient in your pantry. Ingredients" +
+                        " in green mean you have the item in your pantry.\n\nBy Clicking cook, the required ingredients to make the" +
+                        " recipe will be deducted from your pantry quantity.");
+                infoDialog.setCancelable(true);
+                infoDialog.setPositiveButton("OK", null);
+                infoDialog.setTitle("Cooking");
+                infoDialog.show();
+            }
+        });
+
+        //Creates Listener to Open new Activity, this is the top right button for home PA = pantry activity
+        ImageButton ButtonhomeCL = findViewById(R.id.homeButtonCL);
+        ButtonhomeCL.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent ButtonhomeCL = new Intent(RecipePullUp.this, MainActivity.class);
+                startActivity(ButtonhomeCL);
+            }
+        });
+
+        //Creates Listener to Open new Activity, this is the top left button for recipe
+        ImageButton ButtonrecipeCL = findViewById(R.id.recipeButtonCL);
+        ButtonrecipeCL.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent ButtonrecipeCL = new Intent(RecipePullUp.this, ListPantry.class);
+                startActivity(ButtonrecipeCL);
+            }
+        });
     }
-//Will let the User know if they the ingredients to cook the recipe.
-    public int[] availableIgQu(String[] ig, String [] qu)
-    {
+
+    //Will let the User know if they the ingredients to cook the recipe.
+    public int[] availableIgQu(String[] ig, String[] qu) {
         Cursor pantryC = pantryDb.getAllRows();  //Cursor creates a copy of the DTB we c;an iterate through
         int[] cook = new int[2];
         int cookIg = 0;
         int cookQu = 0;
-        for(int i=0; i < ig.length; i++) {
-             if (pantryC.moveToFirst() ) {
-                 //Checks if the ingredients in the recipe matching with any of the Ingredients in the pantry if does switch text to red.
-                 A:do {
-                     if(ig[i].equals(""))
-                     {
+        for (int i = 0; i < ig.length; i++) {
+            if (pantryC.moveToFirst()) {
+                //Checks if the ingredients in the recipe matching with any of the Ingredients in the pantry if does switch text to red.
+                A:
+                do {
+                    if (ig[i].equals("")) {
                         cookIg++;
                         cookQu++;
                         break A;
 
-                     }else {
-                         if (ig[i].equalsIgnoreCase(pantryC.getString(1))) {
-                             switch (i) {                                      ////////////////////////////////////////////////////////////////////////////
-                                 case 0:    i1.setTextColor(Color.GREEN);        //if i = (any of the cases) switch the text to red, and break out of loop.//
-                                            cookIg++;                          ////////////////////////////////////////////////////////////////////////////
-                                            if(Integer.parseInt(qu[i]) <= Integer.parseInt(pantryC.getString(2))) {
-                                                q1.setTextColor(Color.GREEN);
-                                                cookQu++;
-                                            }
-                                            break A;
+                    } else {
+                        if (ig[i].equalsIgnoreCase(pantryC.getString(1))) {
+                            switch (i) {                                      ////////////////////////////////////////////////////////////////////////////
+                                case 0:
+                                    i1.setTextColor(Color.GREEN);        //if i = (any of the cases) switch the text to red, and break out of loop.//
+                                    cookIg++;                          ////////////////////////////////////////////////////////////////////////////
+                                    if (Integer.parseInt(qu[i]) <= Integer.parseInt(pantryC.getString(2))) {
+                                        q1.setTextColor(Color.GREEN);
+                                        cookQu++;
+                                    }
+                                    break A;
 
-                                 case 1:    i2.setTextColor(Color.GREEN);
-                                            cookIg++;
-                                            if(Integer.parseInt(qu[i]) <= Integer.parseInt(pantryC.getString(2))) {
-                                                q2.setTextColor(Color.GREEN);
-                                                cookQu++;
-                                            }
-                                            break A;
+                                case 1:
+                                    i2.setTextColor(Color.GREEN);
+                                    cookIg++;
+                                    if (Integer.parseInt(qu[i]) <= Integer.parseInt(pantryC.getString(2))) {
+                                        q2.setTextColor(Color.GREEN);
+                                        cookQu++;
+                                    }
+                                    break A;
 
-                                 case 2:    i3.setTextColor(Color.GREEN);
-                                            cookIg++;
-                                            if(Integer.parseInt(qu[i]) <= Integer.parseInt(pantryC.getString(2))) {
-                                                q3.setTextColor(Color.GREEN);
-                                                cookQu++;
-                                            }
-                                            break A;
+                                case 2:
+                                    i3.setTextColor(Color.GREEN);
+                                    cookIg++;
+                                    if (Integer.parseInt(qu[i]) <= Integer.parseInt(pantryC.getString(2))) {
+                                        q3.setTextColor(Color.GREEN);
+                                        cookQu++;
+                                    }
+                                    break A;
 
-                                 case 3:    i4.setTextColor(Color.GREEN);
-                                            cookIg++;
-                                            if(Integer.parseInt(qu[i]) <= Integer.parseInt(pantryC.getString(2))) {
-                                                q4.setTextColor(Color.GREEN);
-                                                cookQu++;
-                                            }
-                                            break A;
-                                 case 4:    i5.setTextColor(Color.GREEN);
-                                            cookIg++;
-                                            if(Integer.parseInt(qu[i]) <= Integer.parseInt(pantryC.getString(2))) {
-                                                qu5.setTextColor(Color.GREEN);
-                                                cookQu++;
-                                            }
-                                            break A;
-                             }
-                         }
-                     }
-                     } while (pantryC.moveToNext());
-             }
+                                case 3:
+                                    i4.setTextColor(Color.GREEN);
+                                    cookIg++;
+                                    if (Integer.parseInt(qu[i]) <= Integer.parseInt(pantryC.getString(2))) {
+                                        q4.setTextColor(Color.GREEN);
+                                        cookQu++;
+                                    }
+                                    break A;
+                                case 4:
+                                    i5.setTextColor(Color.GREEN);
+                                    cookIg++;
+                                    if (Integer.parseInt(qu[i]) <= Integer.parseInt(pantryC.getString(2))) {
+                                        qu5.setTextColor(Color.GREEN);
+                                        cookQu++;
+                                    }
+                                    break A;
+                            }
+                        }
+                    }
+                } while (pantryC.moveToNext());
+            }
         }
         cook[0] = cookIg;
         cook[1] = cookQu;
@@ -167,16 +209,16 @@ public class RecipePullUp extends AppCompatActivity {
     }
 
 
-//Cook the recipe, decreases all the quantity of ingredients/ delete
-    public void cookIt(final int[] cook){
+    //Cook the recipe, decreases all the quantity of ingredients/ delete
+    public void cookIt(final int[] cook) {
         final int cookIg = cook[0];
         final int cookQu = cook[1];
-        btnCook = (Button) findViewById(R.id.btnCook);
+        btnCook = findViewById(R.id.btnCook);
         btnCook.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 AlertDialog.Builder mBuilder = new AlertDialog.Builder(RecipePullUp.this);
-                View mView = getLayoutInflater().inflate(R.layout.cook_dialog,null);
+                View mView = getLayoutInflater().inflate(R.layout.cook_dialog, null);
                 mBuilder.setView(mView);
                 mBuilder.setTitle("Do you want cook recipe?");
 //////////////////
@@ -194,45 +236,41 @@ public class RecipePullUp extends AppCompatActivity {
                 mBuilder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int j) {
-                        if(cookIg == ingredients.length && cookQu == quantitys.length)  //checks if number of available ingredients...
+                        if (cookIg == ingredients.length && cookQu == quantitys.length)  //checks if number of available ingredients...
                         {                                                               //quantitys match up to length of array.
                             Cursor pantryData = pantryDb.getAllRows();
                             int newQu;
                             String s;
-                            for(int i = 0; i < ingredients.length; i++)
-                            {
-                                if(pantryData.moveToFirst())
-                                {
-                                    do{
-                                        if(ingredients[i].equalsIgnoreCase(pantryData.getString(1))) //looks for the ingredients in the Pantry
+                            for (int i = 0; i < ingredients.length; i++) {
+                                if (pantryData.moveToFirst()) {
+                                    do {
+                                        if (ingredients[i].equalsIgnoreCase(pantryData.getString(1))) //looks for the ingredients in the Pantry
                                         {
-                                            newQu = Integer.parseInt(pantryData.getString(2)) -Integer.parseInt(quantitys[i]); //gets new quantity
-                                            if(newQu==0)
-                                            {
+                                            newQu = Integer.parseInt(pantryData.getString(2)) - Integer.parseInt(quantitys[i]); //gets new quantity
+                                            if (newQu == 0) {
                                                 pantryDb.deleteRow(Integer.parseInt(pantryData.getString(0))); //if new quantity = 0, deletes ingredient
 
-                                            }else
-                                            {
+                                            } else {
                                                 s = newQu + "";
-                                                pantryDb.updateData(pantryData.getString(0),s); // updates new quantity
+                                                pantryDb.updateData(pantryData.getString(0), s); // updates new quantity
                                             }
                                         }
 
-                                    }while(pantryData.moveToNext());
+                                    } while (pantryData.moveToNext());
                                 }
                             }
                             Intent backToMain = new Intent(RecipePullUp.this, MainActivity.class);
                             View mView = getLayoutInflater().inflate(R.layout.recipe_childrenlist, null);
-                            Toast.makeText(RecipePullUp.this, "Recipe Cooked",Toast.LENGTH_LONG).show();
+                            Toast.makeText(RecipePullUp.this, "Recipe Cooked", Toast.LENGTH_LONG).show();
                             startActivity(backToMain);
-                        }else{
+                        } else {
                             ////////////////////////////////////////////////////////////////////////////////////////////////////
                             //Recipe failed to cook pops up this message and divert user to either recipe list or pantry list.//
                             ////////////////////////////////////////////////////////////////////////////////////////////////////
                             AlertDialog.Builder mBuilder = new AlertDialog.Builder(RecipePullUp.this);
-                            View mView = getLayoutInflater().inflate(R.layout.fail_cook,null);
-                            Button failRecipe = (Button) mView.findViewById(R.id.failRecipe);
-                            Button failPantry = (Button) mView.findViewById(R.id.failPantry);
+                            View mView = getLayoutInflater().inflate(R.layout.fail_cook, null);
+                            Button failRecipe = mView.findViewById(R.id.failRecipe);
+                            Button failPantry = mView.findViewById(R.id.failPantry);
                             failRecipe.setOnClickListener(new View.OnClickListener() {
                                 @Override
                                 public void onClick(View view) {
@@ -250,8 +288,7 @@ public class RecipePullUp extends AppCompatActivity {
                             mBuilder.setView(mView);
                             AlertDialog dialog = mBuilder.create();
                             dialog.show();
-                            dialog.getWindow().setLayout(1050, 1000);
-
+                            dialog.getWindow().setLayout(1050,750);
                         }
                     }
                 });
@@ -261,6 +298,4 @@ public class RecipePullUp extends AppCompatActivity {
             }
         });
     }
-
-
 }

@@ -36,16 +36,13 @@
         <activity android:name=".HelpActivity"
             android:screenOrientation="portrait"/>
         <activity android:name=".RecipeActivity"
-            android:windowSoftInputMode="stateHidden"
             android:screenOrientation="portrait"/>
         <activity android:name=".RecipePullUp"
-            android:windowSoftInputMode="stateHidden"
             android:screenOrientation="portrait"/>
         <activity android:name=".ListRecipe"
-            android:windowSoftInputMode="stateHidden"
+            android:windowSoftInputMode="stateAlwaysHidden"
             android:screenOrientation="portrait"/>
         <activity android:name=".ListPantry"
-            android:windowSoftInputMode="stateHidden"
             android:screenOrientation="portrait"/>
         <activity android:name=".PreferencesActivity"
             android:screenOrientation="portrait"></activity>
@@ -57,9 +54,6 @@
             android:screenOrientation="portrait"></activity>
         <activity android:name=".what_i_can_cook"
             android:screenOrientation="portrait"></activity>
-        <activity android:name=".ApprovedFoodListActivity"
-            android:screenOrientation="portrait"></activity>
-
     </application>
 
 </manifest>

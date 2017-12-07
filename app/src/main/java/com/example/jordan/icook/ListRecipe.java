@@ -35,9 +35,23 @@ public class ListRecipe extends AppCompatActivity {
         setContentView(R.layout.content_recipe);
         text1 = findViewById(R.id.myRecipe);
         text1.setEnabled(false);
-        btnAdd = findViewById(R.id.btn_AddRecipe);
+        btnAdd = findViewById(R.id.btn_AddRecipeRL);
         myDb = new DatabaseRecipe(this);
         pantryDb = new DatabaseHelper(this);
+        //MEssageBox HelpWindow
+        Button pantryInfo = findViewById(R.id.infoRecipebuttonRL);
+        pantryInfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                android.app.AlertDialog.Builder infoDialog = new android.app.AlertDialog.Builder(ListRecipe.this);
+                infoDialog.setMessage("To Delete Recipes, press and hold the item you wish to delete.\n\nTo add a recipe click the + icon located " +
+                        "at the lower right hand corner.\n\nFor more information on the recipe, tap the name.");
+                infoDialog.setCancelable(true);
+                infoDialog.setPositiveButton("OK", null);
+                infoDialog.setTitle("Adding Recipes");
+                infoDialog.show();
+            }
+        });
         compareRecipesToPantry();
         populateListView();
         MenuButtons();

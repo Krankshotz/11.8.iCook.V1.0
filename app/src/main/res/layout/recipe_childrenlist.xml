@@ -4,16 +4,57 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/kitcheb_blurburlesgue"
     android:orientation="vertical">
+
+    <ImageButton
+        android:id="@+id/homeButtonCL"
+        android:layout_width="90dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="16dp"
+        android:background="@android:color/transparent"
+        android:scaleType="fitCenter"
+        android:src="@drawable/swipehome"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/recipeButtonCL"
+        android:layout_width="90dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="16dp"
+        android:background="@android:color/transparent"
+        android:scaleType="fitCenter"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/swipespantry" />
+
+    <Button
+        android:id="@+id/infoRecipeChildren"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="296dp"
+        android:layout_marginStart="88dp"
+        android:background="@drawable/ic_info_black_24dp"
+        android:backgroundTint="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btnCook" />
 
     <TextView
         android:id="@+id/header_ins"
         android:layout_width="181dp"
         android:layout_height="43dp"
+        android:layout_marginEnd="136dp"
         android:layout_marginLeft="16dp"
         android:text="Instructions"
+        android:textColor="@android:color/white"
         android:textSize="30sp"
         app:layout_constraintBottom_toTopOf="@+id/scrollView2"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintLeft_toLeftOf="parent" />
 
     <TextView
@@ -22,22 +63,24 @@
         android:layout_height="42dp"
         android:layout_marginEnd="16dp"
         android:text="Quantity"
+        android:background="@color/white_clearest"
+        android:textColor="@android:color/black"
         android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/qu1"
         app:layout_constraintEnd_toEndOf="parent" />
 
     <TextView
         android:id="@+id/name"
-        android:layout_width="362dp"
-        android:layout_height="45dp"
+        android:layout_width="0dp"
+        android:layout_height="58dp"
         android:layout_marginTop="24dp"
-        android:background="@android:color/darker_gray"
-        android:backgroundTint="@android:color/darker_gray"
+        android:background="@color/CustomBackdropText"
+
         android:text="TextView"
         android:textAlignment="center"
-        android:textColor="@color/colorPrimaryDark"
-        android:textSize="35sp"
-        android:textStyle="bold|italic"
+        android:textColor="@android:color/white"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -45,30 +88,35 @@
 
     <TextView
         android:id="@+id/header_ig"
-        android:layout_width="222dp"
+        android:layout_width="0dp"
         android:layout_height="42dp"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="8dp"
+        android:background="@color/white_clearest"
         android:text="Ingredients"
+        android:textAlignment="textStart"
+        android:textColor="@android:color/black"
         android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/ig1"
         app:layout_constraintEnd_toStartOf="@+id/header_qu"
         app:layout_constraintStart_toStartOf="parent" />
 
+
     <TextView
         android:id="@+id/ig1"
-        android:layout_width="222dp"
+        android:layout_width="0dp"
         android:layout_height="35dp"
-
         android:layout_marginLeft="16dp"
+        android:layout_marginStart="8dp"
+        android:background="@color/white_Clear"
         android:paddingBottom="5dp"
         android:paddingTop="5dp"
         android:text="ingredient1"
-        android:textColor="?attr/colorError"
+        android:textColor="@android:color/black"
         android:textSize="20sp"
-        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/ig2"
         app:layout_constraintEnd_toStartOf="@+id/qu1"
-        app:layout_constraintLeft_toLeftOf="parent" />
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/qu1"
@@ -80,6 +128,7 @@
         android:paddingTop="5dp"
         android:text="quantity 1"
         android:textColor="?attr/colorError"
+        android:background="@color/white_Clear"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/qu2"
@@ -88,19 +137,20 @@
 
     <TextView
         android:id="@+id/ig2"
-        android:layout_width="222dp"
+        android:layout_width="0dp"
         android:layout_height="35dp"
         android:layout_marginLeft="16dp"
-
+        android:layout_marginStart="8dp"
+        android:background="@color/white_Clear"
         android:paddingBottom="5dp"
         android:paddingTop="5dp"
         android:text="ingredient2"
-        android:textColor="?attr/colorError"
+        android:textColor="@android:color/black"
         android:textSize="20sp"
-        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/ig3"
         app:layout_constraintEnd_toStartOf="@+id/qu2"
-        app:layout_constraintLeft_toLeftOf="parent" />
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/qu2"
@@ -111,6 +161,7 @@
         android:paddingTop="5dp"
         android:text="quantity2"
         android:textColor="?attr/colorError"
+        android:background="@color/white_Clear"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/qu3"
@@ -118,18 +169,20 @@
 
     <TextView
         android:id="@+id/ig3"
-        android:layout_width="222dp"
+        android:layout_width="0dp"
         android:layout_height="35dp"
         android:layout_marginLeft="16dp"
+        android:layout_marginStart="8dp"
+        android:background="@color/white_Clear"
         android:paddingBottom="5dp"
         android:paddingTop="5dp"
         android:text="ingredient3"
-        android:textColor="?attr/colorError"
+        android:textColor="@android:color/black"
         android:textSize="20sp"
-        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/ig4"
         app:layout_constraintEnd_toStartOf="@+id/qu3"
-        app:layout_constraintLeft_toLeftOf="parent" />
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/qu3"
@@ -140,6 +193,7 @@
         android:paddingTop="5dp"
         android:text="quantity3"
         android:textColor="?attr/colorError"
+        android:background="@color/white_Clear"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/qu4"
@@ -147,18 +201,20 @@
 
     <TextView
         android:id="@+id/ig4"
-        android:layout_width="222dp"
+        android:layout_width="0dp"
         android:layout_height="35dp"
         android:layout_marginLeft="16dp"
+        android:layout_marginStart="8dp"
+        android:background="@color/white_Clear"
         android:paddingBottom="5dp"
         android:paddingTop="5dp"
         android:text="ingredient4"
-        android:textColor="?attr/colorError"
+        android:textColor="@android:color/black"
         android:textSize="20sp"
-        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/ig5"
         app:layout_constraintEnd_toStartOf="@+id/qu4"
-        app:layout_constraintLeft_toLeftOf="parent" />
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/qu4"
@@ -169,6 +225,7 @@
         android:paddingTop="5dp"
         android:text="quantity4"
         android:textColor="?attr/colorError"
+        android:background="@color/white_Clear"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/qu5"
@@ -176,19 +233,21 @@
 
     <TextView
         android:id="@+id/ig5"
-        android:layout_width="222dp"
+        android:layout_width="0dp"
         android:layout_height="35dp"
         android:layout_marginBottom="15dp"
         android:layout_marginLeft="16dp"
+        android:layout_marginStart="8dp"
+        android:background="@color/white_Clear"
         android:paddingBottom="5dp"
         android:paddingTop="5dp"
         android:text="ingredient5"
-        android:textColor="?attr/colorError"
+        android:textColor="@android:color/black"
         android:textSize="20sp"
-        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/header_ins"
         app:layout_constraintEnd_toStartOf="@+id/qu5"
-        app:layout_constraintLeft_toLeftOf="parent" />
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/qu5"
@@ -200,6 +259,7 @@
         android:paddingTop="5dp"
         android:text="quantity5"
         android:textColor="?attr/colorError"
+        android:background="@color/white_Clear"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/scrollView2"
@@ -227,6 +287,8 @@
                 android:paddingHorizontal="12dp"
                 android:text="TextView"
                 android:textAlignment="textStart"
+                android:textColor="@android:color/black"
+                android:background="@color/white_Clear"
                 android:textSize="20sp" />
         </LinearLayout>
     </ScrollView>
@@ -237,11 +299,12 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="4dp"
         android:layout_marginTop="8dp"
-        android:text="Cook It"
+        android:background="@color/Cucumber"
+        android:text="COOK"
         android:textAlignment="center"
         android:textAllCaps="false"
+        android:textColor="@android:color/white"
         android:textSize="20dp"
-        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
