@@ -4,8 +4,25 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/kitcheb_blurburlesgue"
+    android:background="@drawable/kitcheb"
     android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="4dp"
+
+        android:background="@color/CustomBackdropText"
+        android:text="TextView"
+        android:textAlignment="center"
+        android:textColor="@android:color/white"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
         android:id="@+id/homeButtonCL"
@@ -70,23 +87,6 @@
         app:layout_constraintEnd_toEndOf="parent" />
 
     <TextView
-        android:id="@+id/name"
-        android:layout_width="0dp"
-        android:layout_height="58dp"
-        android:layout_marginTop="24dp"
-        android:background="@color/CustomBackdropText"
-
-        android:text="TextView"
-        android:textAlignment="center"
-        android:textColor="@android:color/white"
-        android:textSize="30sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
         android:id="@+id/header_ig"
         android:layout_width="0dp"
         android:layout_height="42dp"
@@ -98,6 +98,7 @@
         android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/ig1"
         app:layout_constraintEnd_toStartOf="@+id/header_qu"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
 
 
